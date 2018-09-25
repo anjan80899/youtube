@@ -9,7 +9,7 @@ class VideoComments extends React.Component{
         super(props);
         this.submitComment=this.submitComment.bind(this);
         this.commentVisible=this.commentVisible.bind(this);
-       
+       console.log(this.props.id);
     }
 
     submitComment(e){
@@ -18,28 +18,22 @@ class VideoComments extends React.Component{
         const commentpost=document.getElementById("comment").value;
         ;
 
-        axios.post(`http://localhost:8000/comments`,`id=ghjf&text=${commentpost}`).then(
+        axios.post(`http://localhost:8000/comments`,`id=${this.props.selectedVideo.id.videoId}&text=${commentpost}`).then(
             res=>{
                 console.log(res);
             }
         )
     }
-    
-    componentDidMount() {
-        axios.get(`http://localhost:8000/comments/ghjf`)
-          .then(res => {
-              console.log(res.data);
-            const data=res.data;
-            this.props.commentAction(data);
-            console.log(this.props.comment);
-          })
-      }
       commentVisible(){
-        //   console.log(this.props.comment);
+        axios.get(`http://localhost:8000/comments/${this.props.id}`)
+        .then(res => {
+          const data=res.data;
+          this.props.commentAction(data);
+        })
           if(this.props.comment){
               return(
                 <ul>
-                { this.props.comment.map(comment => (<li>{comment.text}</li>))}
+                { this.props.comment.map(comment => (<li className='list-group-item'>{comment.text}</li>))}
                   </ul>
               );
           }else{
@@ -49,10 +43,11 @@ class VideoComments extends React.Component{
 
     render(){
         return(
-            <div>
+            <div id='comment-section'>
+                <h3>Comments:</h3>
                 <form onSubmit={this.submitComment}>
-                <input type='text' id="comment" placeholder=' type your comment' className='form-row'/>
-                <input type='submit' value='Post'/>
+                <input type='text' id="comment" placeholder=' type your comment' className="form-control input-lg"/>
+                <input type='submit' className='btn btn-info' value='Post'/>
                 </form>
                 <div>
                    {this.commentVisible()}
@@ -65,8 +60,8 @@ class VideoComments extends React.Component{
 }
 function mapStateToProps(state){
      return{
-         selectedVideo:this.selectedVideo,
-         comment:this.comment
+         selectedVideo:state.selectedVideo,
+         comment:state.comment
      }
 }
 function mapDispatchToProps(dispatch){

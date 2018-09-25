@@ -15,14 +15,14 @@ const VideoDetail= (props) =>{
         <div className='video-play'>
         <div className='video-detail col-md-g'>
             <div >
-                  <iframe width="854" height="471"  src={url} allowFullScreen></iframe>
+                  <iframe width="1080" height="671"  src={url} allowFullScreen></iframe>
                   
             </div>
             <div className='details'>
                 <div><h4>{video.snippet.title}</h4></div>
                 
             </div>
-            <VideoComments/>
+            <VideoComments id={videoId}/>
         </div>
         </div>
     );

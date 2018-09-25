@@ -24,6 +24,7 @@
  }
  .video-play{
      float: left;
+     margin: 20px;
  }
  
  .video-list{
@@ -33,4 +34,7 @@
  }
  .item-body{
      display: inline-block;
+ }
+ #comment-section{
+     margin: 20px;
  }
