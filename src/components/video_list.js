@@ -7,7 +7,6 @@ const VideoList = (props) => {
     const videoItems=props.videos.map((video)=>{
         return(
             <VideoListItem
-            
                 key={video.etag}
                 video={video} />
         );
@@ -15,9 +14,7 @@ const VideoList = (props) => {
 
     return(
         <div className='video-list'>
-        <ul >
-        {videoItems}
-        </ul>
+            {videoItems}   
         </div>
     );
 };
@@ -27,4 +24,3 @@ function mapStateToProps(state){
     };
 }
 export default connect(mapStateToProps)(VideoList);
-// className="col-md-4 list-group"

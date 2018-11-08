@@ -13,17 +13,17 @@ const VideoDetail= (props) =>{
 
     return(
         <div className='video-play'>
-        <div className='video-detail col-md-g'>
-            <div >
-                  <iframe width="1080" height="671"  src={url} allowFullScreen></iframe>
-                  
+            <div className='row'>
+                <div>
+                    <iframe width="1280" height="720"  src={url} allowFullScreen></iframe> 
+                </div>
+                <div className='row'>
+                    <div><h4>{video.snippet.title}</h4></div>
+                </div>
+                <div className='row'>
+                    <VideoComments id={videoId}/>
+                </div>
             </div>
-            <div className='details'>
-                <div><h4>{video.snippet.title}</h4></div>
-                
-            </div>
-            <VideoComments id={videoId}/>
-        </div>
         </div>
     );
 };

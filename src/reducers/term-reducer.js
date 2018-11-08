@@ -1,4 +1,4 @@
-export default function termReducer(state='jalsa',action){
+export default function termReducer(state='',action){
     switch(action.type){
         case 'TERM_ACTION':
         return action.payload;

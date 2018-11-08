@@ -1,6 +1,5 @@
 import React from 'react';
 import SearchBar from './components/search_bar';
-import YTSearch from 'youtube-api-search';
 import VideoList from './components/video_list';
  import VideoDetail from './components/video_detail';
  import { connect } from 'react-redux';
@@ -8,29 +7,23 @@ import VideoList from './components/video_list';
  import {videosAction} from './actions/videos-action';
  
 
-const API_KEY='AIzaSyCpdDBzgC6QWYmdjPUJNvOzQpzrwruW-D8';
-
 class App extends React.Component{
     constructor(props){
         super(props);
-
-       this.videoSearch(this.props.term);
-    }
-
-    videoSearch(term){
-        YTSearch({key:API_KEY,term:term}, (data)=>{
-            this.props.videosAction(data);
-        });
+       this.props.videosAction(this.props.term);
     }
     render(){
         return(
             <div>
-              <SearchBar onSearchTermChange={searchTerm =>this.videoSearch(searchTerm)}/>
-              <div className='video-body'>
-              <VideoDetail video={this.props.selectedVideo} />
-              <VideoList
-               />
-              </div>
+                <SearchBar  onSearchTermChange={searchTerm =>this.props.videosAction(searchTerm)}/>
+                <div className='row'>
+                    <div className='col-sm-8'>
+                        <VideoDetail video={this.props.selectedVideo} />
+                    </div>
+                    <div className='col-sm-4'>
+                        <VideoList/>
+                    </div>
+                </div>
             </div>
         );
     }
@@ -46,3 +39,4 @@ function matchDispatchToProps(dispatch){
     return bindActionCreators({videosAction:videosAction},dispatch);
 }
 export default connect(mapStateToProps,matchDispatchToProps)(App);
+// onSearchTermChange={searchTerm =>this.videoSearch(searchTerm)}

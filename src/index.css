@@ -1,11 +1,7 @@
 .search-bar{
     margin:20px;
     width:45%;
-    
-}
-
-.video-item img{
-    max-width: 64px;
+    height: 30px;
 }
 
 .video-detail .details{
@@ -15,26 +11,29 @@
     border-radius: 4px;
 
 }
- .list-group-item{
-     cursor: pointer;
-     list-style-type:none;
- }
- .list-group-item:hover{
-     background-color: #eee;
- }
  .video-play{
-     float: left;
-     margin: 20px;
+     margin-left:20px;
+     position: absolute;
+     z-index:0;
  }
  
- .video-list{
-     height: 100%;
-     
-     display: inline-block;
- }
- .item-body{
-     display: inline-block;
- }
  #comment-section{
      margin: 20px;
+ }
+ .auto-list{
+     position: fixed;
+     display: inline-block;
+     z-index: 99;
+     background-color: whitesmoke;
+     margin-left: 20px;
+ }
+ .auto-items{
+    /* position: absolute; */
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    text-decoration-color: black;
+    top: 100%;
+    left: 0;
+    right: 0;
  }

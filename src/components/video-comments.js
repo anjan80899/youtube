@@ -10,6 +10,7 @@ class VideoComments extends React.Component{
         this.submitComment=this.submitComment.bind(this);
         this.commentVisible=this.commentVisible.bind(this);
        console.log(this.props.id);
+       
     }
 
     submitComment(e){
@@ -25,11 +26,13 @@ class VideoComments extends React.Component{
         )
     }
       commentVisible(){
-        axios.get(`http://localhost:8000/comments/${this.props.id}`)
-        .then(res => {
-          const data=res.data;
-          this.props.commentAction(data);
-        })
+        // axios.get(`http://localhost:8000/comments/${this.props.id}`)
+        // .then(res => {
+        //   const data=res.data;
+        //   console.log(data);
+        //   this.props.commentAction(data);
+        // })
+        console.log('hi');
           if(this.props.comment){
               return(
                 <ul>
